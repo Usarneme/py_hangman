@@ -20,10 +20,11 @@ filename = 'words.txt'
 words = get_all_words(filename)
 print("Loaded all words...")
 answer_word = pick_a_random_word(words)
-print(f"Selected a random word: {answer_word}")
+# print(f"Selected a random word: {answer_word}")
 guessed_letters = '_' * len(answer_word)
 number_of_guesses = 0;
-print(f"Underscored the word: {guessed_letters}")
+# print(f"Underscored the word: {guessed_letters}")
+print(f"Picked a random word... of length {len(answer_word)}.")
 
 solved = False
 while not solved and number_of_guesses < 10:
@@ -37,7 +38,7 @@ while not solved and number_of_guesses < 10:
   else:
     # remove the guess from the unguessed_letters list
     unguessed_letters = unguessed_letters.replace(guess, "", 1)
-    # if the guessed letter is in the answer_word, replace the _ with the guessed letter
+    # if the guessed letter is in the answer_word, replace the 1 or more _ with the guessed letter
     if guess in answer_word:
       print(f"Good guess! '{guess}' is in the word.")
       indices = [i for i, char in enumerate(answer_word) if char == guess]
@@ -45,16 +46,16 @@ while not solved and number_of_guesses < 10:
         guessed_letters = guessed_letters[:index] + guess + guessed_letters[index + 1:]
     else:
       print(f"Nope! '{guess}' is not in the word.")
-    # increment number of guesses
-    number_of_guesses += 1
-    print(f"After {number_of_guesses} guesses, your word is: {guessed_letters}")
+      number_of_guesses += 1
+
+    print(f"After {number_of_guesses} failed attempt{"s" if number_of_guesses > 1 else ""}, your guess word is: {guessed_letters}")
 
   if '_' not in guessed_letters:
     solved = True
 
 if solved:
-  print(f"You win! The word was {answer_word}.")
+  print(f"You win! The word was '{answer_word}'.")
 else:
-  print(f"You did not win! The word was {answer_word}.")
+  print(f"You did not win! The word was '{answer_word}'.")
 
 print("Exiting the game...")
