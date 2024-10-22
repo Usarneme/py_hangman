@@ -29,7 +29,7 @@ print(f"Picked a random word... of length {len(answer_word)}.")
 solved = False
 while not solved and number_of_guesses < 10:
   print(f"Remaining letters not yet guessed include '{unguessed_letters}'")
-  guess = input('Please guess a letter: ')
+  guess = input('Please guess a letter: ').lower()
   if len(guess) > 1 or guess not in alphabet:
     print('Please only enter a single letter at a time.')
     continue
